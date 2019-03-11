@@ -1,3 +1,14 @@
+function feedGenerator() {
+
+	var feeds = ["Ancora con questa storia Giacomì, se ti ho detto di no è no.",
+							"Sono tua cugina.", "No.", "Basta."];
+	var feed;
+	var randomIndexCalc = Math.floor(Math.random()*(3-0))+0;
+	var randomIndex = feeds[randomIndexCalc];
+
+	return randomIndex;
+}
+
 function sendMessage(input) {
 
 	var wrapper = $(".wrapper");
@@ -18,7 +29,7 @@ function sendMessage(input) {
 }
 
 function receivedMessage() {
-	
+
 	var wrapper = $(".wrapper");
 
 	var messageContReceived = document.createElement("div");
@@ -28,7 +39,7 @@ function receivedMessage() {
 	$(messageContReceived).addClass("message-cont-received");
 	$(wrapperReceived).addClass("wrapper-rec");
 
-	$(message).text("Ancora con questa storia Giacomì, se ti ho detto di no è no.");
+	$(message).text(feedGenerator);
 
 	wrapperReceived.append(message)
 	messageContReceived.append(wrapperReceived);
