@@ -57,8 +57,6 @@ function init() {
 	var textBox = $("#text-box");
 
 	textBox.keyup(textEnter);
-
-
 }
 
 $(document).ready(init)
