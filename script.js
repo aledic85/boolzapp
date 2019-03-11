@@ -2,7 +2,6 @@ function feedGenerator() {
 
 	var feeds = ["Ancora con questa storia Giacomì, se ti ho detto di no è no.",
 							"Sono tua cugina.", "No.", "Basta."];
-	var feed;
 	var randomIndexCalc = Math.floor(Math.random()*(3-0))+0;
 	var randomIndex = feeds[randomIndexCalc];
 
