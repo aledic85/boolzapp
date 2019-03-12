@@ -226,6 +226,24 @@ section {
   height: auto;
 }
 
+.drop {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  background-color: white;
+  border-radius: 2px;
+  position: relative;
+  top: 45px;
+  right: 80px;
+  text-align: center;
+  display: none;
+}
+
+.drop:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 @media all and (max-width: 1200px) {
 
   h4, h6, h5, p, .fas, .fa-bell-slash {

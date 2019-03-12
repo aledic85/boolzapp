@@ -16,16 +16,22 @@ function sendMessage(input) {
 	var wrapperSend = document.createElement("div");
 	var message = document.createElement("p");
 	var span = document.createElement("span");
+	var drop = document.createElement("div");
+	var h5 = document.createElement("h5");
 
 	$(messageContSend).addClass("message-cont-send");
 	$(wrapperSend).addClass("wrapper-send");
+	$(drop).addClass("drop");
 
 	$(message).text(input);
 	$(span).text("17.30");
+	$(h5).text("Delele message");
 
+	drop.append(h5);
 	wrapperSend.append(message);
 	wrapperSend.append(span);
 	messageContSend.append(wrapperSend);
+	messageContSend.append(drop);
 
 	wrapper.append(messageContSend);
 }
@@ -38,16 +44,22 @@ function receivedMessage() {
 	var wrapperReceived = document.createElement("div");
 	var message = document.createElement("p");
 	var span = document.createElement("span");
+	var drop = document.createElement("div");
+	var h5 = document.createElement("h5");
 
 	$(messageContReceived).addClass("message-cont-received");
 	$(wrapperReceived).addClass("wrapper-rec");
+	$(drop).addClass("drop");
 
 	$(message).text(feedGenerator);
 	$(span).text("17.30");
+	$(h5).text("Delele message");
 
+	drop.append(h5);
 	wrapperReceived.append(message);
 	wrapperReceived.append(span);
 	messageContReceived.append(wrapperReceived);
+	messageContReceived.append(drop);
 
 	wrapper.append(messageContReceived);
 }
@@ -104,15 +116,35 @@ function userSearch() {
 	}
 }
 
+function dropdownMenu() {
+
+	var me = $(this);
+	console.log(me);
+
+	me.siblings(".drop").toggle();
+
+	var drop = $(".drop");
+	drop.click(function() {
+
+		me.addClass("hidden");
+		me.siblings(".drop").hide();
+	})
+}
+
+
 function init() {
 
 	var textBox = $("#text-box");
 	var user = $(".user > .header");
 	var search = $("#search");
+	var wrapperSend = $(".wrapper-send");
+	var wrapperRec = $(".wrapper-rec")
 
 	textBox.keyup(textEnter);
 	user.click(userClick);
-	search.keyup(userSearch)
+	search.keyup(userSearch);
+	wrapperSend.click(dropdownMenu);
+	wrapperRec.click(dropdownMenu);
 }
 
 $(document).ready(init)
