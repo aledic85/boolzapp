@@ -48,8 +48,24 @@ section {
 	flex-direction: column;
 }
 
+.user {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.user > .header:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.text-cont > p {
+  opacity: 0.5;
+}
+
 .wrapper {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
@@ -57,13 +73,18 @@ section {
   overflow: auto;
 }
 
+.active {
+  display: flex;
+}
+
 .header {
 	width: 100%;
-	height: 10%;
+	height: 15%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: aliceblue;
+  border-bottom: 1px solid grey;
 }
 
 .text-send {
@@ -91,10 +112,6 @@ section {
 	align-items: center;
 	justify-content: space-around;
 	background-color: aliceblue;
-	border-bottom: 1px solid grey;
-}
-
-.user {
 	border-bottom: 1px solid grey;
 }
 
@@ -201,17 +218,25 @@ section {
   width: 90%;
 }
 
+.hidden {
+  display: none;
+}
+
+.height {
+  height: auto;
+}
+
 @media all and (max-width: 1200px) {
 
   h4, h6, h5, p, .fas, .fa-bell-slash {
     font-size: 9px;
   }
 
-  .wrapper span {
+  .wrapper span, .clock-cont {
   	font-size: 4px;
   }
 
-  .disclaimer {
+  .disclaimer, .text-cont > p {
     display: none;
   }
 }
