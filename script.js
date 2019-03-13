@@ -91,13 +91,13 @@ function userClick() {
 	var wrappers = $(".right-cont > .wrapper");
 	var nextWrap = wrappers.eq(meInd);
 
-	nextWrap.addClass("active")
+	nextWrap.addClass("active");
 }
 
 function userSearch() {
 
 	var me = $(this);
-	var val = me.val();
+	var val = me.val().toLowerCase();
 	var users = $(".user > .header");
 
 	users.removeClass("hidden");
@@ -106,7 +106,7 @@ function userSearch() {
 	for (var i = 0; i < users.length; i++) {
 
 		var user = users.eq(i);
-		var userCont = user.text();
+		var userCont = user.find("h4").text().toLowerCase();
 
 		if (!userCont.includes(val)) {
 
@@ -119,7 +119,6 @@ function userSearch() {
 function dropdownMenu() {
 
 	var me = $(this);
-	console.log(me);
 
 	me.siblings(".drop").toggle();
 
@@ -131,20 +130,18 @@ function dropdownMenu() {
 	})
 }
 
-
 function init() {
 
 	var textBox = $("#text-box");
 	var user = $(".user > .header");
 	var search = $("#search");
-	var wrapperSend = $(".wrapper-send");
-	var wrapperRec = $(".wrapper-rec")
 
 	textBox.keyup(textEnter);
 	user.click(userClick);
 	search.keyup(userSearch);
-	wrapperSend.click(dropdownMenu);
-	wrapperRec.click(dropdownMenu);
+
+	$(document).on("click", ".wrapper-send", dropdownMenu);
+	$(document).on("click", ".wrapper-rec", dropdownMenu);
 }
 
-$(document).ready(init)
+$(document).ready(init);
