@@ -8,6 +8,16 @@ function feedGenerator() {
 	return randomIndex;
 }
 
+function dynamicClock() {
+
+	var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+	var hours = h + ":" + m;
+
+	return hours;
+}
+
 function sendMessage(input) {
 
 	var wrapper = $(".wrapper.active");
@@ -24,7 +34,7 @@ function sendMessage(input) {
 	$(drop).addClass("drop");
 
 	$(message).text(input);
-	$(span).text("17.30");
+	$(span).text(dynamicClock);
 	$(h5).text("Delele message");
 
 	drop.append(h5);
@@ -52,7 +62,7 @@ function receivedMessage() {
 	$(drop).addClass("drop");
 
 	$(message).text(feedGenerator);
-	$(span).text("17.30");
+	$(span).text(dynamicClock);
 	$(h5).text("Delele message");
 
 	drop.append(h5);
