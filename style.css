@@ -171,6 +171,7 @@ section {
 	margin-right: 10px;
 	margin-top: 20px;
   height: auto;
+  position: relative;
 }
 
 .message-cont-received {
@@ -179,6 +180,7 @@ section {
 	margin-left: 10px;
 	margin-top: 20px;
   height: auto;
+  position: relative;
 }
 
 .wrapper-rec {
@@ -232,9 +234,8 @@ section {
   line-height: 30px;
   background-color: white;
   border-radius: 2px;
-  position: relative;
-  top: 45px;
-  right: 80px;
+  position: absolute;
+  top: 50px;
   text-align: center;
   display: none;
 }
