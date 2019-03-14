@@ -129,15 +129,17 @@ function userSearch() {
 function dropdownMenu() {
 
 	var me = $(this);
-
-	me.siblings(".drop").toggle();
-
 	var drop = $(".drop");
-	drop.click(function() {
 
-		me.addClass("hidden");
-		me.siblings(".drop").hide();
-	})
+	me.siblings(drop).toggle();
+}
+
+function deleteMessage() {
+
+	var me = $(this);
+
+	me.siblings("div").addClass("hidden");
+	me.hide()
 }
 
 function init() {
@@ -152,6 +154,7 @@ function init() {
 
 	$(document).on("click", ".wrapper-send", dropdownMenu);
 	$(document).on("click", ".wrapper-rec", dropdownMenu);
+	$(document).on("click", ".drop", deleteMessage);
 }
 
 $(document).ready(init);
