@@ -13,64 +13,51 @@ function dynamicClock() {
 	var today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
-	var hours = h + ":" + m;
+	var hours;
+
+	if(m < 10) {
+
+		hours = h + ":" + "0" + m;
+	} else {
+
+		hours = h + ":" + m;
+	}
 
 	return hours;
 }
 
 function sendMessage(input) {
 
+	var data = {
+		class: "message-cont-send",
+		class1: "wrapper-send",
+		text: input,
+		hours: dynamicClock(),
+	}
+
 	var wrapper = $(".wrapper.active");
+	var messageTemplate = $("#message-template").html();
+	var compile = Handlebars.compile(messageTemplate);
+	var finalHtml = compile(data);
 
-	var messageContSend = document.createElement("div");
-	var wrapperSend = document.createElement("div");
-	var message = document.createElement("p");
-	var span = document.createElement("span");
-	var drop = document.createElement("div");
-	var h5 = document.createElement("h5");
-
-	$(messageContSend).addClass("message-cont-send");
-	$(wrapperSend).addClass("wrapper-send");
-	$(drop).addClass("drop");
-
-	$(message).text(input);
-	$(span).text(dynamicClock);
-	$(h5).text("Delele message");
-
-	drop.append(h5);
-	wrapperSend.append(message);
-	wrapperSend.append(span);
-	messageContSend.append(wrapperSend);
-	messageContSend.append(drop);
-
-	wrapper.append(messageContSend);
+	wrapper.append(finalHtml);
 	wrapper.animate({scrollTop: wrapper.prop("scrollHeight")});
 }
 
 function receivedMessage(wrapper) {
 
-	var messageContReceived = document.createElement("div");
-	var wrapperReceived = document.createElement("div");
-	var message = document.createElement("p");
-	var span = document.createElement("span");
-	var drop = document.createElement("div");
-	var h5 = document.createElement("h5");
+	var data = {
+		class: "message-cont-received",
+		class1: "wrapper-rec",
+		text: feedGenerator(),
+		hours: dynamicClock(),
+	}
 
-	$(messageContReceived).addClass("message-cont-received");
-	$(wrapperReceived).addClass("wrapper-rec");
-	$(drop).addClass("drop");
+	var messageTemplate = $("#message-template").html();
+	var compile = Handlebars.compile(messageTemplate);
+	var finalHtml = compile(data);
 
-	$(message).text(feedGenerator);
-	$(span).text(dynamicClock);
-	$(h5).text("Delete message");
-
-	drop.append(h5);
-	wrapperReceived.append(message);
-	wrapperReceived.append(span);
-	messageContReceived.append(wrapperReceived);
-	messageContReceived.append(drop);
-
-	wrapper.append(messageContReceived);
+	wrapper.append(finalHtml);
 	wrapper.animate({scrollTop: wrapper.prop("scrollHeight")});
 }
 

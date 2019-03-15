@@ -6,9 +6,21 @@
     <title>Boolzap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <script src="script.js"></script>
+    <script id="message-template" type="text/x-handlebars-template">
+      <div class="{{class}}">
+        <div class="{{class1}}">
+          <p>{{text}}</p>
+          <span>{{hours}}</span>
+        </div>
+        <div class="drop">
+          <h5>Delete message</h5>
+        </div>
+      </div>
+    </script>
   </head>
   <body>
 	  <header></header>
