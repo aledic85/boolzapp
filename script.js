@@ -47,9 +47,7 @@ function sendMessage(input) {
 	wrapper.animate({scrollTop: wrapper.prop("scrollHeight")});
 }
 
-function receivedMessage() {
-
-	var wrapper = $(".wrapper.active");
+function receivedMessage(wrapper) {
 
 	var messageContReceived = document.createElement("div");
 	var wrapperReceived = document.createElement("div");
@@ -81,6 +79,7 @@ function textEnter(e) {
 	var keyPress = e.which;
 	var input = $("#text-box");
 	var inputVal = input.val();
+	var wrapper = $(".wrapper.active");
 
 	if (keyPress == 13) {
 
@@ -88,7 +87,10 @@ function textEnter(e) {
 
 		input.val("");
 
-		setTimeout(receivedMessage, 2000);
+		setTimeout(function() {
+
+			receivedMessage(wrapper);
+		}, 2000);
 	}
 }
 
