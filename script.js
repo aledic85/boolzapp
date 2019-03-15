@@ -44,6 +44,7 @@ function sendMessage(input) {
 	messageContSend.append(drop);
 
 	wrapper.append(messageContSend);
+	wrapper.animate({scrollTop: wrapper.prop("scrollHeight")});
 }
 
 function receivedMessage() {
@@ -63,7 +64,7 @@ function receivedMessage() {
 
 	$(message).text(feedGenerator);
 	$(span).text(dynamicClock);
-	$(h5).text("Delele message");
+	$(h5).text("Delete message");
 
 	drop.append(h5);
 	wrapperReceived.append(message);
@@ -72,6 +73,7 @@ function receivedMessage() {
 	messageContReceived.append(drop);
 
 	wrapper.append(messageContReceived);
+	wrapper.animate({scrollTop: wrapper.prop("scrollHeight")});
 }
 
 function textEnter(e) {
@@ -139,7 +141,7 @@ function deleteMessage() {
 	var me = $(this);
 
 	me.siblings("div").addClass("hidden");
-	me.hide()
+	me.hide();
 }
 
 function init() {
