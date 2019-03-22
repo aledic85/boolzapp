@@ -1,11 +1,26 @@
-function feedGenerator() {
+function feedGenerator(wrapper) {
 
-	var feeds = ["Ancora con questa storia Giacomì, se ti ho detto di no è no.",
-							"Sono tua cugina.", "No.", "Basta."];
-	var randomIndexCalc = Math.floor(Math.random()*(4-0))+0;
-	var randomIndex = feeds[randomIndexCalc];
+	// var feeds = ["Ancora con questa storia Giacomì, se ti ho detto di no è no.",
+	// 						"Sono tua cugina.", "No.", "Basta."];
+	// var randomIndexCalc = Math.floor(Math.random()*(4-0))+0;
+	// var randomIndex = feeds[randomIndexCalc];
+	//
+	// return randomIndex;
 
-	return randomIndex;
+	$.ajax({
+
+		url: "https://www.boolean.careers/api/random/sentence",
+		method: "GET",
+		success: function(data, state) {
+
+			if (data.success) {
+
+				var sentence = data.response;
+
+				receivedMessage(wrapper, sentence);
+			}
+		}
+	})
 }
 
 function dynamicClock() {
@@ -44,12 +59,12 @@ function sendMessage(input) {
 	wrapper.animate({scrollTop: wrapper.prop("scrollHeight")});
 }
 
-function receivedMessage(wrapper) {
+function receivedMessage(wrapper, sentence) {
 
 	var data = {
 		class: "message-cont-received",
 		class1: "wrapper-rec",
-		text: feedGenerator(),
+		text: sentence,
 		hours: dynamicClock(),
 	}
 
@@ -76,7 +91,7 @@ function textEnter(e) {
 
 		setTimeout(function() {
 
-			receivedMessage(wrapper);
+			feedGenerator(wrapper);
 		}, 2000);
 	}
 }
